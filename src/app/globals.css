@@ -1,26 +1,76 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --font-default: var(--font-montreal-regular);
+  --sonner-toast-bg: rgba(30, 30, 30, 0.7); /* semi-transparent */
+  --sonner-toast-text: #ffffff;
+  --sonner-border-radius: 1rem;
+  --sonner-backdrop-blur: blur(10px);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+  --font-sans: "Mona Sans", sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* --color-background: #f1f1ec; */
+
+  /* --color-background: #d1d1c7; */
+  --color-background: #e8e8e3;
+
+  --color-white-50: #565633;
+
+  /* /////  NAVBAR   */
+  --color-black-50: #6b645c;
+
+  /* hero text */
+  --color-black-100: #171717;
+
+  /* july */
+  --color-black-200: #393632;
+
+  --color-white-100: #a29e9a;
+
+  --color-white-200: #7e766c;
+
+  /* about */
+  --color-about: #e6e8e3;
+  --color-para: #bfbfb1;
+
+  /* contact */
+
+  --color-contact: #393632;
 }
 
 body {
-  background: var(--background);
+  background: #000;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-default), sans-serif;
+}
+
+.font-regular {
+  font-family: var(--font-montreal-regular), sans-serif;
+}
+
+.font-mmedium {
+  font-family: var(--font-montreal-medium), sans-serif;
+}
+
+.font-light {
+  font-family: var(--font-montreal-light), sans-serif;
+  font-weight: bold;
+}
+
+.font-azeretMono-r {
+  font-family: var(--font-azeretMono-regular), sans-serif;
+}
+
+.font-azeretMono-l {
+  font-family: var(--font-azeretMono-light), sans-serif;
+}
+
+.font-consola {
+  font-family: var(--font-consola);
+}
+
+#hero-wrapper {
+  will-change: transform, opacity;
 }

@@ -19,8 +19,8 @@ const Contact = () => {
       )
       .then(
         () => {
-          toast.success("Message sent!", {
-            description: "Thanks for reaching out.",
+          toast.success("Thanks for reaching out.", {
+            description: "I'll get back to you as soon as possible.",
             duration: 1000,
           });
 

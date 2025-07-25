@@ -28,10 +28,10 @@ const Scrambler = ({ children }: ScramblerProps) => {
       scrambleText: {
         text: originalText,
         chars: "upperCase",
-        speed: 0.3,
+        speed: 0.5,
       },
-      duration: 1.8,
-      ease: "expo",
+      duration: 1.5,
+      ease: "power4.inOut",
       scrollTrigger: {
         trigger: el,
         start: "top 90%",

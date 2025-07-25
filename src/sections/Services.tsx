@@ -3,6 +3,7 @@
 import { services } from "@/constants/services";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
 import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -10,6 +11,10 @@ gsap.registerPlugin(ScrollTrigger);
 const Services = ({ ready }: { ready: boolean }) => {
   const containerRef = useRef(null);
 
+  const splitRef = useRef<any>(null);
+  const headingRef = useRef(null);
+
+  // Scroll trigger animation
   useEffect(() => {
     if (!ready) return;
 
@@ -47,6 +52,39 @@ const Services = ({ ready }: { ready: boolean }) => {
     return () => clearTimeout(timeout);
   }, [ready]);
 
+  // heading animation
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      document.fonts.ready.then(() => {
+        const split = new SplitText(headingRef.current, {
+          type: "chars",
+          charsClass: "char",
+        });
+        splitRef.current = split;
+
+        gsap.set(headingRef.current, { autoAlpha: 1 });
+
+        gsap.from(split.chars, {
+          opacity: 0,
+          yPercent: 100,
+          stagger: 0.03,
+          duration: 0.5,
+          ease: "power4",
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        });
+      });
+    }, headingRef);
+
+    return () => {
+      ctx.revert();
+      splitRef.current?.revert();
+    };
+  }, []);
+
   return (
     <div
       id="services"
@@ -56,7 +94,10 @@ const Services = ({ ready }: { ready: boolean }) => {
       {/* HEADING */}
       <div className="flex flex-col gap-10 md:gap-16 w-full">
         <div className="py-4">
-          <h1 className="text-[3rem] leading-none uppercase text-background font-mmedium font-semibold sm:text-7xl md:text-8xl">
+          <h1
+            ref={headingRef}
+            className="text-[3rem] leading-none uppercase text-background font-mmedium font-semibold sm:text-7xl md:text-8xl"
+          >
             What <br className="sm:hidden" /> I do /
           </h1>
         </div>
@@ -78,7 +119,7 @@ const Services = ({ ready }: { ready: boolean }) => {
         {services.map((service, index) => (
           <div
             key={index}
-            className="service-card relative flex flex-col items-center min-h-screen"
+            className="service-card relative flex flex-col items-center min-h-screen bg-black"
           >
             <hr className="w-[96%] self-center text-black-50 mb-4" />
             <div className="flex flex-col gap-6 bg-black">

@@ -33,16 +33,16 @@ const ScrambledSplitText = ({
 
     const originalText = text;
 
-    gsap.set(el, { textContent: "" });
+    // gsap.set(el, { textContent: "" });
 
     gsap.to(el, {
       scrambleText: {
         text: originalText,
         chars: "upperCase",
-        speed: 0.3,
+        speed: 0.7,
       },
-      duration: 1.5,
-      ease: "expo",
+      duration: 2,
+      ease: "power1.inOut",
       scrollTrigger: {
         trigger: el,
         start: "top bottom",

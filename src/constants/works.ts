@@ -19,8 +19,8 @@ export const projects = [
   },
   {
     id: "03",
-    title: "Social Networking Platform",
-    subtitle: "Socially",
+    title: "Socially",
+    subtitle: "Social Networking Platform",
     year: "2024",
     href: "https://socially-sable.vercel.app/",
     img: "/images/socially.jpeg",
@@ -46,8 +46,8 @@ export const projects = [
   },
   {
     id: "06",
-    title: "Exam Preparation Assistance",
-    subtitle: "PrepMate",
+    title: "PrepMate",
+    subtitle: "Exam Preparation Assistance",
     year: "2025",
     href: "https://interview-prep-tau-azure.vercel.app/",
     img: "/images/exam-bg.jpeg",

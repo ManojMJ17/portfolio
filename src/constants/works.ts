@@ -1,6 +1,15 @@
 export const projects = [
   {
     id: "01",
+    title: "clix",
+    subtitle: "Linux Command Helper",
+    year: "2025",
+    href: "https://github.com/ManojMJ17/clix",
+    img: "/images/linux2.jpeg",
+    video: "/videos/clix_demo.mp4",
+  },
+  {
+    id: "02",
     title: "RhythmBox",
     subtitle: "Spotify clone",
     year: "2023",
@@ -9,7 +18,7 @@ export const projects = [
     video: "/videos/Spotify_project.mp4",
   },
   {
-    id: "02",
+    id: "03",
     title: "Social Networking Platform",
     subtitle: "Socially",
     year: "2024",
@@ -18,7 +27,7 @@ export const projects = [
     video: "/videos/Socially_project.mp4",
   },
   {
-    id: "03",
+    id: "04",
     title: "Awwward Winning Website",
     subtitle: "Gaming Website",
     year: "2024",
@@ -27,7 +36,7 @@ export const projects = [
     video: "/videos/awward_winning_website_project.mp4",
   },
   {
-    id: "04",
+    id: "05",
     title: "Digital Library",
     subtitle: "University Library System",
     year: "2024",
@@ -36,7 +45,7 @@ export const projects = [
     video: "/videos/BookWise_project.mp4",
   },
   {
-    id: "05",
+    id: "06",
     title: "Exam Preparation Assistance",
     subtitle: "PrepMate",
     year: "2025",

@@ -10,33 +10,28 @@ const Contact = () => {
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-<<<<<<< Updated upstream
-//        "service_qf8sz79",
-        "service_0onwras",
-        "template_r29hupp",
-=======
-        'service_qf8sz79',
-        'template_r29hupp',
->>>>>>> Stashed changes
-        form.current!,
-        'qjSAVqzJPHyyxjG35',
-      )
-      .then(
-        () => {
-          toast.success('Thanks for reaching out.', {
-            description: "I'll get back to you as soon as possible.",
-            duration: 1000,
-          });
+    const serviceId = process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY;
 
-          form.current?.reset();
-        },
-        (error) => {
-          toast.error('Something went wrong, try again!');
-          console.error(error.text);
-        },
-      );
+    if (!serviceId || !templateId || !publicKey) {
+      throw new Error('Missing EmailJS environment variables');
+    }
+
+    emailjs.sendForm(serviceId, templateId, form.current!, publicKey).then(
+      () => {
+        toast.success('Thanks for reaching out.', {
+          description: "I'll get back to you as soon as possible.",
+          duration: 1000,
+        });
+
+        form.current?.reset();
+      },
+      (error) => {
+        toast.error('Something went wrong, try again!');
+        console.error(error.text);
+      },
+    );
   };
 
   return (

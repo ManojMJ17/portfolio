@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "@geist-ui/icons";
 import React from "react";
 import SplitTextLink from "./SplitTextLink";
+import gsap from "gsap";
 
 const Button = ({ title, href }: { title: string; href: string }) => {
   return (
@@ -10,6 +11,21 @@ const Button = ({ title, href }: { title: string; href: string }) => {
         className="group relative flex justify-center items-center
               px-8 py-4  xl:px-7 xl:py-5 rounded-[4rem] text-white uppercase bg-black-200
              transition-colors duration-300"
+        onClick={(e) => {
+          if (href && href.startsWith("#")) {
+            e.preventDefault();
+            const smoother = (gsap as any).ScrollSmoother?.get();
+            if (smoother) {
+              smoother.scrollTo(href, true);
+            } else {
+              const element = document.querySelector(href);
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
+            }
+            window.history.pushState(null, "", href);
+          }
+        }}
       >
         {/* Animated BG Layer */}
         <span className="absolute inset-0 overflow-hidden rounded-[4rem]">
@@ -26,6 +42,7 @@ const Button = ({ title, href }: { title: string; href: string }) => {
             text={title}
             color="text-white"
             href={href}
+            as="div"
             classname="md:h-[30px] md:text-[1.3rem] xl:text-3xl"
           />
 

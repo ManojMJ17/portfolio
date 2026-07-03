@@ -10,13 +10,16 @@ const SplitTextLink = ({
   href,
   color,
   classname,
+  as,
 }: {
   text: string;
   href?: string;
   color?: string;
   classname?: string;
+  as?: "a" | "div";
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const Component = as ?? "a";
+  const containerRef = useRef<any>(null);
   const topRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const topSplit = useRef<any>(null);
@@ -102,15 +105,32 @@ const SplitTextLink = ({
 
   return (
     <div className="h-[20px] md:h-[30px] overflow-hidden">
-      <div
-        ref={containerRef}
+      <Component
+        ref={containerRef as any}
+        href={Component === "a" ? href : undefined}
         className={`relative block h-full cursor-pointer ${
           color ?? "text-black-50"
         }`}
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
-        onClick={() => {
-          if (href) router.push(href);
+        onClick={(e) => {
+          if (href) {
+            if (href.startsWith("#")) {
+              e.preventDefault();
+              const smoother = (gsap as any).ScrollSmoother?.get();
+              if (smoother) {
+                smoother.scrollTo(href, true);
+              } else {
+                const element = document.querySelector(href);
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
+              }
+              window.history.pushState(null, "", href);
+            } else {
+              router.push(href);
+            }
+          }
         }}
       >
         <div
@@ -127,7 +147,7 @@ const SplitTextLink = ({
         >
           {text}
         </div>
-      </div>
+      </Component>
     </div>
   );
 };

@@ -16,36 +16,144 @@ const Services = ({ ready }: { ready: boolean }) => {
 
   // Scroll trigger animation
   useEffect(() => {
-    if (!ready) return;
+    if (!ready || !containerRef.current) return;
 
     const timeout = setTimeout(() => {
       requestAnimationFrame(() => {
-        const ctx = gsap.context(() => {
+        const mm = gsap.matchMedia();
+
+        mm.add("(min-width: 769px)", () => {
           ScrollTrigger.normalizeScroll(true); // ✅ Enable smoother native scroll
 
           const cards = gsap.utils.toArray<HTMLElement>(".service-card");
+          if (cards.length >= 3) {
+            let tl: gsap.core.Timeline | null = null;
 
-          cards.forEach((card, index) => {
-            ScrollTrigger.create({
-              trigger: card,
-              start: "top top+=20%",
-              end:
-                index === cards.length - 1
-                  ? "bottom bottom+=100"
-                  : "bottom top+=100",
-              pin: true,
-              pinSpacing: false,
-              scrub: true,
-              markers: false,
-              // ✅ Reduce strain on mobile
-              anticipatePin: 1, // helps smooth transition
-            });
-          });
+            const setup = () => {
+              // 1. Kill previous timeline and ScrollTrigger if they exist
+              if (tl) {
+                if (tl.scrollTrigger) tl.scrollTrigger.kill();
+                tl.kill();
+                tl = null;
+              }
 
-          ScrollTrigger.refresh();
-        }, containerRef);
+              // 2. Clear all inline styles to measure true natural layout
+              gsap.set(containerRef.current, { clearProps: "height" });
+              gsap.set(cards, { clearProps: "height,paddingTop,paddingBottom,marginTop,overflow,opacity,y" });
 
-        return () => ctx.revert();
+              // 3. Measure natural values before collapsing
+              const card2Height = cards[1].offsetHeight;
+              const card3Height = cards[2].offsetHeight;
+
+              const card2Style = window.getComputedStyle(cards[1]);
+              const card3Style = window.getComputedStyle(cards[2]);
+
+              const card2MarginTop = card2Style.marginTop;
+              const card2PaddingTop = card2Style.paddingTop;
+              const card2PaddingBottom = card2Style.paddingBottom;
+
+              const card3MarginTop = card3Style.marginTop;
+              const card3PaddingTop = card3Style.paddingTop;
+              const card3PaddingBottom = card3Style.paddingBottom;
+
+              const finalServicesHeight = containerRef.current.offsetHeight;
+
+              // 4. Lock container height to prevent layout shrinking
+              gsap.set(containerRef.current, { height: finalServicesHeight });
+
+              // 5. Collapse Card 2 and Card 3 dynamically
+              gsap.set(cards[1], {
+                height: 0,
+                paddingTop: 0,
+                paddingBottom: 0,
+                marginTop: 0,
+                opacity: 0,
+                overflow: "hidden",
+              });
+              gsap.set(cards[2], {
+                height: 0,
+                paddingTop: 0,
+                paddingBottom: 0,
+                marginTop: 0,
+                opacity: 0,
+                overflow: "hidden",
+              });
+
+              // 6. Create a single timeline for pinning the entire section
+              const pinStartOffset = "10%"; // Easy to adjust: "8%", "10%", "12%", etc.
+              tl = gsap.timeline({
+                scrollTrigger: {
+                  trigger: cards[0],
+                  start: `top top+=${pinStartOffset}`,
+                  end: () => `+=${finalServicesHeight - window.innerHeight}`,
+                  pin: containerRef.current,
+                  pinSpacing: true,
+                  scrub: true,
+                  anticipatePin: 1,
+                }
+              });
+
+              // Stage 2: Card 2 height and margins expand naturally below Card 1
+              tl.to(cards[1], {
+                height: card2Height,
+                paddingTop: card2PaddingTop,
+                paddingBottom: card2PaddingBottom,
+                marginTop: card2MarginTop,
+                opacity: 1,
+                duration: 1,
+                ease: "none"
+              });
+
+              // Stage 3: Card 3 height and margins expand naturally below Card 2
+              tl.to(cards[2], {
+                height: card3Height,
+                paddingTop: card3PaddingTop,
+                paddingBottom: card3PaddingBottom,
+                marginTop: card3MarginTop,
+                opacity: 1,
+                duration: 1,
+                ease: "none"
+              });
+
+              // Stage 4: Holding stage to keep the complete stack visible before unpinning
+              tl.to({}, { duration: 0.5 });
+
+              // Force ScrollTrigger to refresh coordinates and sync with ScrollSmoother height
+              ScrollTrigger.refresh();
+
+              // Temporary runtime inspection variables
+              (window as any).debugScrollTrigger = tl.scrollTrigger;
+              (window as any).debugTimeline = tl;
+              console.log("DEBUG_INITIALIZED", {
+                trigger: tl.scrollTrigger?.trigger,
+                pin: tl.scrollTrigger?.pin,
+                start: tl.scrollTrigger?.start,
+                end: tl.scrollTrigger?.end,
+              });
+            };
+
+            // Run initial setup
+            setup();
+
+            // Rebuild the timeline and measurements on window resize
+            window.addEventListener("resize", setup);
+
+            return () => {
+              window.removeEventListener("resize", setup);
+              if (tl) {
+                if (tl.scrollTrigger) tl.scrollTrigger.kill();
+                tl.kill();
+              }
+            };
+          }
+        });
+
+        // Mobile screens: no pinning or stack translations
+        mm.add("(max-width: 768px)", () => {
+          // Cards will layout and scroll naturally
+        });
+
+        return () => mm.revert();
       });
     }, 100);
 
@@ -119,7 +227,7 @@ const Services = ({ ready }: { ready: boolean }) => {
         {services.map((service, index) => (
           <div
             key={index}
-            className="service-card relative flex flex-col items-center min-h-screen bg-black"
+            className="service-card relative flex flex-col items-center min-h-[50vh] md:min-h-0 h-fit py-10 md:py-16 bg-black"
           >
             <hr className="w-[96%] self-center text-black-50 mb-4" />
             <div className="flex flex-col gap-6 bg-black">

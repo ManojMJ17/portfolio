@@ -38,7 +38,7 @@ const Contact = () => {
     <div id='contact' className='mt-[20%] lg:-mt-[20%] xl:-mt-[12%]'>
       <div className='w-full flex justify-center'>
         <div
-          className='p-8 w-[90%]
+          className='p-8 w-[90%] max-w-[1200px] mx-auto
 bg-gradient-to-b from-stone-900 from- via-stone-800 via- to-stone-700 to-
 rounded-lg flex flex-col gap-10 md:p-10 xl:p-16'
         >
@@ -48,7 +48,7 @@ rounded-lg flex flex-col gap-10 md:p-10 xl:p-16'
             </h1>
           </div>
 
-          <div className='md:px-4 lg:px-30 xl:mx-[20%]'>
+          <div className='w-full max-w-[650px] mx-auto'>
             <div className='px-4 py-10 md:p-10 xl:p-16 rounded-xl flex flex-col gap-5 bg-white/4 xl:gap-10'>
               <div>
                 <h3 className='text-background text-[8vw] font-mmedium text-center md:text-[4vw] xl:text-[2vw]'>
@@ -73,11 +73,11 @@ rounded-lg flex flex-col gap-10 md:p-10 xl:p-16'
                     />
                   </div>
                   <div className='relative'>
-                    <textarea
+                    <input
+                      type='email'
                       name='email'
-                      typeof='email'
                       placeholder='Wanna hear back? Add your email'
-                      className='p-4 xl:px-6 h-32 xl:h-40 font-consola tracking-wide text-white bg-white/6 text-lg w-full rounded-2xl resize-none md:h-16 xl:text-[2rem]'
+                      className='p-4 xl:px-6 h-16 font-consola tracking-wide text-white bg-white/6 text-lg w-full rounded-2xl xl:text-[2rem]'
                       required
                     />
                   </div>

@@ -38,7 +38,16 @@ const Page = () => {
           backgroundColor: "#e8e8e3",
           duration: 0.2,
           ease: "power2",
-          onComplete: () => setShowHero(true),
+          onComplete: () => {
+            if (typeof window !== "undefined") {
+              window.scrollTo(0, 0);
+            }
+            setShowHero(true);
+            gsap.set("#content", {
+              opacity: 1,
+              autoAlpha: 1,
+            });
+          },
         });
       },
     });
@@ -157,45 +166,47 @@ const Page = () => {
       </div>
 
       {/* Actual content */}
-      {showHero && (
-        <div id="content" className="relative z-10">
-          {/* NAVBAR + HERO combined */}
+      <div
+        id="content"
+        className="relative z-10 opacity-0"
+        style={{ visibility: "hidden" }}
+      >
+        {/* NAVBAR + HERO combined */}
 
-          <div className="h-screen relative space-y-10">
-            <div className="navbar z-30 relative">
-              <Navbar />
-            </div>
-            <div
-              id="hero-wrapper"
-              className="relative inset-0 w-full z-20 pointer-events-none"
-            >
-              <section
-                id="hero-section"
-                className="w-full h-full flex justify-center"
-              >
-                <Hero />
-              </section>
-            </div>
+        <div className="h-screen relative space-y-10">
+          <div className="navbar z-30 relative">
+            <Navbar />
           </div>
-
-          {/* SERVICES SECTION */}
-          <section
-            id="section-2"
-            className="relative z-30 text-[#d1d1c7] bg-black rounded-3xl pt-16 space-y-16"
+          <div
+            id="hero-wrapper"
+            className="relative inset-0 w-full z-20 pointer-events-none"
           >
-            <Services ready={readyForScroll} />
-            <Works />
-            <Skills />
-            <About />
-          </section>
-
-          {/* CONTACT */}
-          <section className="relative space-y-32">
-            <Contact />
-            <Footer />
-          </section>
+            <section
+              id="hero-section"
+              className="w-full h-full flex justify-center"
+            >
+              <Hero startAnimation={showHero} />
+            </section>
+          </div>
         </div>
-      )}
+
+        {/* SERVICES SECTION */}
+        <section
+          id="section-2"
+          className="relative z-30 text-[#d1d1c7] bg-black rounded-3xl pt-16 space-y-16"
+        >
+          <Services ready={readyForScroll} />
+          <Works />
+          <Skills />
+          <About />
+        </section>
+
+        {/* CONTACT */}
+        <section className="relative space-y-32">
+          <Contact />
+          <Footer />
+        </section>
+      </div>
     </div>
   );
 };

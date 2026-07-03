@@ -4,7 +4,7 @@ import gsap from "gsap";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
-const Content = () => {
+const Content = ({ startAnimation }: { startAnimation: boolean }) => {
   const today = new Date();
   const day = today.getDate();
   const month = today
@@ -24,122 +24,94 @@ const Content = () => {
   const buttonRef = useRef<HTMLDivElement>(null);
   const julRef = useRef<HTMLHeadingElement>(null); // 👈 for JUL'29
 
-  /// left arrow icon
+  // 1. Pre-set all initial hidden states synchronously on mount to avoid visual pop/flash
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      if (!iconRef.current) return;
-
-      gsap.to(iconRef.current, {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power2",
-        delay: 0.5,
-      });
-
-      return () => ctx.revert();
+    gsap.set(iconRef.current, { opacity: 0, y: -15 });
+    gsap.set(pRef.current, { opacity: 0, y: 15 });
+    gsap.set(workRef.current, { opacity: 0, y: 15 });
+    gsap.set([buttonRef.current, julRef.current], {
+      yPercent: 100,
+      clipPath: "inset(0% 0% 100% 0%)",
     });
+    gsap.set(imageContainerRef.current, { clipPath: "inset(0% 0% 100% 0%)" });
+    gsap.set(imageContentRef.current, { scale: 1.1 });
   }, []);
 
-  /// left para animation
+  // 2. Play animations in a single consolidated timeline when startAnimation is true
   useEffect(() => {
-    if (!pRef.current) return;
+    if (!startAnimation) return;
 
-    // const split = new SplitType(pRef.current, { types: "lines" });
-    // gsap.from([split.lines], {
-    //   y: 20,
-    //   opacity: 0,
-    //   duration: 0.5,
-    //   ease: "power2.inOut",
-    //   stagger: 0.1,
-    // });
-
-    gsap.fromTo(
-      pRef.current,
-      {
-        y: 20,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.5,
-        ease: "power2",
-      }
-    );
-  }, []);
-
-  /// Contact and Jul button animation
-  useEffect(() => {
-    if (!buttonRef.current) return;
-
-    gsap.fromTo(
-      [buttonRef.current, julRef.current],
-      {
-        yPercent: 100,
-
-        clipPath: "inset(0% 0% 100% 0%)",
-      },
-      {
-        yPercent: 0,
-        clipPath: "inset(0% 0% 0% 0%)",
-        duration: 1,
-
-        ease: "power3",
-      }
-    );
-  }, []);
-
-  /// work ref
-  useEffect(() => {
     const ctx = gsap.context(() => {
-      if (!workRef.current) return;
-
-      gsap.from(workRef.current, {
-        y: 20,
-        opacity: 0,
-        duration: 0.5,
-        ease: "power2",
+      const tl = gsap.timeline({
+        defaults: { ease: "power2.out", duration: 0.6 }
       });
+
+      // Synchronize image reveal animation starting at time 0
+      const img = imageRevealRef.current;
+      if (img && imageContainerRef.current && imageContentRef.current) {
+        const handleImageLoad = () => {
+          imageContainerRef.current!.style.visibility = "visible";
+
+          gsap.fromTo(
+            imageContainerRef.current,
+            { clipPath: "inset(0% 0% 100% 0%)" },
+            { clipPath: "inset(0% 0% 0% 0%)", duration: 1.4, ease: "power3.out" }
+          );
+
+          gsap.fromTo(
+            imageContentRef.current,
+            { scale: 1.1 },
+            { scale: 1, duration: 1.4, ease: "power3.out" }
+          );
+        };
+
+        if (img.complete) {
+          handleImageLoad();
+        } else {
+          img.addEventListener("load", handleImageLoad);
+        }
+      }
+
+      // Stagger paragraph text and AVAILABLE FOR WORK slightly after image/name animation starts
+      tl.to(
+        [pRef.current, workRef.current],
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.1,
+          duration: 0.8,
+        },
+        0.3
+      );
+
+      // Animate left icon
+      tl.to(
+        iconRef.current,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        0.5
+      );
+
+      // Animate contact and date buttons
+      tl.to(
+        [buttonRef.current, julRef.current],
+        {
+          yPercent: 0,
+          clipPath: "inset(0% 0% 0% 0%)",
+          stagger: 0.1,
+          duration: 0.8,
+          ease: "power3.out",
+        },
+        0.6
+      );
     }, wrapperRef);
 
     return () => ctx.revert();
-  }, []);
-
-  useEffect(() => {
-    const img = imageRevealRef.current;
-    if (!img || !imageContainerRef.current || !imageContentRef.current) return;
-
-    const handleImageLoad = () => {
-      imageContainerRef.current!.style.visibility = "visible";
-
-      const tl = gsap.timeline({
-        defaults: { ease: "power3.out", duration: 1.6 },
-        onComplete: () => {
-          window.scrollTo({ top: 0, behavior: "instant" });
-        },
-      });
-
-      tl.fromTo(
-        imageContainerRef.current,
-        { clipPath: "inset(0% 0% 100% 0%)" },
-        { clipPath: "inset(0% 0% 0% 0%)" }
-      );
-
-      tl.fromTo(imageContentRef.current, { scale: 1.1 }, { scale: 1 }, "<");
-    };
-
-    // Image already cached
-    if ((img as HTMLImageElement).complete) {
-      handleImageLoad();
-    } else {
-      img.addEventListener("load", handleImageLoad);
-    }
-
-    return () => {
-      img.removeEventListener("load", handleImageLoad);
-    };
-  }, []);
+  }, [startAnimation]);
 
   return (
     <div ref={wrapperRef} className="px-7 overflow-hidden">
@@ -175,6 +147,7 @@ const Content = () => {
         <div className="md:flex md:items-center md:justify-center md:col-span-1">
           <div
             ref={imageContainerRef}
+            style={{ visibility: "hidden" }}
             className="relative w-[80px] h-[110px] md:h-[350px] md:w-[300px] lg:h-[370px]  lg:w-[290px] xl:w-[300px] xl:h-[400px]"
           >
             <div
@@ -186,6 +159,7 @@ const Content = () => {
                 alt="Wanderer"
                 ref={imageRevealRef}
                 fill
+                priority
                 className="grayscale object-cover"
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 90vw, 60vw"
               />

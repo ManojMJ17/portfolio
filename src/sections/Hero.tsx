@@ -7,15 +7,18 @@ import Content from "./Content";
 
 gsap.registerPlugin(SplitText);
 
-const Hero = () => {
+const Hero = ({ startAnimation }: { startAnimation: boolean }) => {
   const heroRef = useRef<HTMLHeadingElement>(null);
   const splitRef = useRef<any>(null);
 
+  // Split characters on initial mount in background
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      if (!heroRef.current) return;
+    if (!heroRef.current) return;
 
-      document.fonts.ready.then(() => {
+    let ctx: any;
+
+    const runSplit = () => {
+      ctx = gsap.context(() => {
         if (splitRef.current) splitRef.current.revert();
 
         const split = new SplitText(heroRef.current, {
@@ -25,7 +28,7 @@ const Hero = () => {
         splitRef.current = split;
 
         // Wrap characters
-        split.chars.forEach((char: HTMLElement) => {
+        split.chars.forEach((char: any) => {
           const wrapper = document.createElement("div");
           wrapper.style.overflow = "hidden";
           wrapper.style.display = "inline-block";
@@ -35,22 +38,80 @@ const Hero = () => {
           wrapper.appendChild(char);
         });
 
+        // Pre-set character states to avoid any pop-in during load
+        gsap.set(split.chars, { yPercent: 100, opacity: 0 });
         gsap.set(heroRef.current, { opacity: 1 });
-
-        gsap.from(split.chars, {
-          yPercent: 100,
-          stagger: 0.07,
-          duration: 1,
-          ease: "power4.out",
-        });
       });
-    });
+    };
+
+    // Run synchronously if fonts already loaded, otherwise wait
+    if (document.fonts && document.fonts.status === "loaded") {
+      runSplit();
+    } else if (document.fonts) {
+      document.fonts.ready.then(runSplit);
+    } else {
+      runSplit();
+    }
 
     return () => {
-      ctx.revert();
+      if (ctx) ctx.revert();
       if (splitRef.current) splitRef.current.revert();
     };
   }, []);
+
+  // Run reveal animation when startAnimation is true
+  useEffect(() => {
+    if (!startAnimation) return;
+
+    let ctx: any;
+
+    const playReveal = () => {
+      ctx = gsap.context(() => {
+        if (!splitRef.current) {
+          // Fallback split if not split yet
+          const split = new SplitText(heroRef.current, {
+            type: "chars",
+            charsClass: "char",
+          });
+          splitRef.current = split;
+
+          // Wrap characters
+          split.chars.forEach((char: any) => {
+            const wrapper = document.createElement("div");
+            wrapper.style.overflow = "hidden";
+            wrapper.style.display = "inline-block";
+            wrapper.style.verticalAlign = "bottom";
+            wrapper.style.position = "relative";
+            char.parentNode?.insertBefore(wrapper, char);
+            wrapper.appendChild(char);
+          });
+          gsap.set(split.chars, { yPercent: 100, opacity: 0 });
+          gsap.set(heroRef.current, { opacity: 1 });
+        }
+
+        gsap.to(splitRef.current.chars, {
+          yPercent: 0,
+          opacity: 1,
+          stagger: 0.05,
+          duration: 1.2,
+          ease: "power4.out",
+        });
+      });
+    };
+
+    // Run when fonts are loaded
+    if (document.fonts && document.fonts.status === "loaded") {
+      playReveal();
+    } else if (document.fonts) {
+      document.fonts.ready.then(playReveal);
+    } else {
+      playReveal();
+    }
+
+    return () => {
+      if (ctx) ctx.revert();
+    };
+  }, [startAnimation]);
 
   return (
     <section className="flex flex-col pt-4 md:gap-10 xl:gap-4">
@@ -66,7 +127,7 @@ const Hero = () => {
       </div>
       {/* Content renders immediately and animates in parallel */}
       <div>
-        <Content />
+        <Content startAnimation={startAnimation} />
       </div>
     </section>
   );

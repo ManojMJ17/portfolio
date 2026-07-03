@@ -70,6 +70,9 @@ const Page = () => {
 
       const { ScrollSmoother } = await import("gsap/ScrollSmoother");
       gsap.registerPlugin(ScrollSmoother);
+      if (typeof window !== "undefined") {
+        (window as any).ScrollSmoother = ScrollSmoother;
+      }
 
       ScrollSmoother.create({
         wrapper: "#wrapper",
@@ -78,7 +81,6 @@ const Page = () => {
         effects: true,
       });
 
-      ScrollTrigger.refresh();
       setReadyForScroll(true);
     };
 
@@ -118,6 +120,9 @@ const Page = () => {
         ease: "power2.out",
       });
     });
+
+    // Refresh ScrollTrigger to calculate correct offsets for all components
+    ScrollTrigger.refresh();
 
     return () => ctx.revert();
   }, [readyForScroll]);

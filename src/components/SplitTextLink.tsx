@@ -82,7 +82,7 @@ const SplitTextLink = ({
   };
 
   return (
-    <div className='h-[20px] md:h-[30px] overflow-hidden'>
+    <div className='h-[20px] md:h-[30px] overflow-hidden w-fit'>
       <Component
         ref={containerRef as any}
         href={Component === 'a' ? href : undefined}

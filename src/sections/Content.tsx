@@ -138,7 +138,7 @@ const Content = ({ startAnimation }: { startAnimation: boolean }) => {
               <br className="hidden xl:block" />
               experiences that leave a mark.
             </p>
-            <div ref={buttonRef} className="mt-4 md:pl-4 cursor-pointer">
+            <div ref={buttonRef} className="mt-4 md:pl-4 cursor-pointer pointer-events-auto">
               <Button title="Contact" href="#contact" />
             </div>
           </div>

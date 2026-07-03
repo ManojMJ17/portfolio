@@ -14,7 +14,8 @@ const Button = ({ title, href }: { title: string; href: string }) => {
         onClick={(e) => {
           if (href && href.startsWith("#")) {
             e.preventDefault();
-            const smoother = (gsap as any).ScrollSmoother?.get();
+            const ScrollSmoother = (window as any).ScrollSmoother || (gsap as any).ScrollSmoother;
+            const smoother = ScrollSmoother?.get();
             if (smoother) {
               smoother.scrollTo(href, true);
             } else {

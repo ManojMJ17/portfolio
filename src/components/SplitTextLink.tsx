@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import gsap from "gsap";
-import { SplitText } from "gsap/SplitText";
-import React, { useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
+import gsap from 'gsap';
+import { SplitText } from 'gsap/SplitText';
+import React, { useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 
 const SplitTextLink = ({
   text,
@@ -16,9 +16,9 @@ const SplitTextLink = ({
   href?: string;
   color?: string;
   classname?: string;
-  as?: "a" | "div";
+  as?: 'a' | 'div';
 }) => {
-  const Component = as ?? "a";
+  const Component = as ?? 'a';
   const containerRef = useRef<any>(null);
   const topRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -33,13 +33,13 @@ const SplitTextLink = ({
 
     const runSplit = () => {
       topSplit.current = new SplitText(topRef.current, {
-        type: "words",
-        wordsClass: "word",
+        type: 'words',
+        wordsClass: 'word',
       });
 
       bottomSplit.current = new SplitText(bottomRef.current, {
-        type: "words",
-        wordsClass: "word",
+        type: 'words',
+        wordsClass: 'word',
       });
     };
 
@@ -55,40 +55,18 @@ const SplitTextLink = ({
     };
   }, []);
 
-  // const handleEnter = () => {
-  //   gsap.to(topSplit.current.words, {
-  //     yPercent: -100,
-  //     ease: "back.out",
-  //     stagger: 0.05,
-  //   });
-
-  //   gsap.to(bottomSplit.current.words, {
-  //     yPercent: -100,
-  //     ease: "back.out",
-  //     stagger: 0.05,
-  //   });
-  // };
-
-  // const handleLeave = () => {
-  //   gsap.to([topSplit.current.words, bottomSplit.current.words], {
-  //     yPercent: 0,
-  //     ease: "back.out",
-  //     stagger: 0.05,
-  //   });
-  // };
-
   const handleEnter = () => {
     if (!topSplit.current || !bottomSplit.current) return;
 
     gsap.to(topSplit.current.words, {
       yPercent: -100,
-      ease: "back.out",
+      ease: 'back.out',
       stagger: 0.05,
     });
 
     gsap.to(bottomSplit.current.words, {
       yPercent: -100,
-      ease: "back.out",
+      ease: 'back.out',
       stagger: 0.05,
     });
   };
@@ -98,24 +76,24 @@ const SplitTextLink = ({
 
     gsap.to([topSplit.current.words, bottomSplit.current.words], {
       yPercent: 0,
-      ease: "back.out",
+      ease: 'back.out',
       stagger: 0.05,
     });
   };
 
   return (
-    <div className="h-[20px] md:h-[30px] overflow-hidden">
+    <div className='h-[20px] md:h-[30px] overflow-hidden'>
       <Component
         ref={containerRef as any}
-        href={Component === "a" ? href : undefined}
+        href={Component === 'a' ? href : undefined}
         className={`relative block h-full cursor-pointer ${
-          color ?? "text-black-50"
+          color ?? 'text-black-50'
         }`}
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
         onClick={(e) => {
           if (href) {
-            if (href.startsWith("#")) {
+            if (href.startsWith('#')) {
               e.preventDefault();
               const smoother = (gsap as any).ScrollSmoother?.get();
               if (smoother) {
@@ -123,10 +101,10 @@ const SplitTextLink = ({
               } else {
                 const element = document.querySelector(href);
                 if (element) {
-                  element.scrollIntoView({ behavior: "smooth" });
+                  element.scrollIntoView({ behavior: 'smooth' });
                 }
               }
-              window.history.pushState(null, "", href);
+              window.history.pushState(null, '', href);
             } else {
               router.push(href);
             }

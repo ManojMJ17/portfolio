@@ -44,7 +44,7 @@ rounded-lg flex flex-col gap-10 md:p-10 xl:p-16'
         >
           <div className='xl:mx-[18%]'>
             <h1 className='uppercase text-background font-mmedium font-semibold text-[14vw] text-center leading-none md:text-[10vw] md:px-20 md:text-center xl:text-[8vw] xl:tracking-tight '>
-              Let &amp; s make it happen
+              Let&apos;s make it happen
             </h1>
           </div>
 

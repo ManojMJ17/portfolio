@@ -3,6 +3,7 @@ import { ArrowDownRight } from "@geist-ui/icons";
 import gsap from "gsap";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { personal, contactLink } from "@/data";
 
 const Content = ({ startAnimation }: { startAnimation: boolean }) => {
   const today = new Date();
@@ -131,15 +132,12 @@ const Content = ({ startAnimation }: { startAnimation: boolean }) => {
               ref={pRef}
               className="my-3 text-[1rem] font-mmedium w-[80%] sm:w-[70%] md:w-[100%] text-black-50 md:pl-3 md:text-[1.2rem] lg:text-xl  xl:text-[1.5rem] lg:leading-relaxed xl:leading-normal"
             >
-              {/* Open to job opportunities worldwide. I love creating clean and
-            simple websites that are easy to use and look beautiful. */}
-              Open to job opportunities worldwide. Passionate about building
-              polished, intuitive,and thoughtful digital{" "}
+              {personal.heroDescriptionLine1}{" "}
               <br className="hidden xl:block" />
-              experiences that leave a mark.
+              {personal.heroDescriptionLine2}
             </p>
             <div ref={buttonRef} className="mt-4 md:pl-4 cursor-pointer pointer-events-auto">
-              <Button title="Contact" href="#contact" />
+              <Button title={contactLink.name} href={contactLink.link} />
             </div>
           </div>
         </div>
@@ -155,8 +153,8 @@ const Content = ({ startAnimation }: { startAnimation: boolean }) => {
               className="relative w-full h-full overflow-hidden rounded-lg"
             >
               <Image
-                src="/images/Caspar_David_Friedrich_-_Wanderer_above_the_Sea_of_Fog.jpeg"
-                alt="Wanderer"
+                src={personal.profileImage.src}
+                alt={personal.profileImage.heroAlt}
                 ref={imageRevealRef}
                 fill
                 priority
@@ -172,8 +170,8 @@ const Content = ({ startAnimation }: { startAnimation: boolean }) => {
             ref={workRef}
             className="text-[1rem] md:text-[1rem] xl:text-[1rem] capitalize text-black-50 font-consola leading-none flex text-end"
           >
-            AVAILABLE FOR <br className="block md:hidden" />
-            WORK
+            {personal.availabilityLine1} <br className="block md:hidden" />
+            {personal.availabilityLine2}
           </p>
           <h1
             ref={julRef}

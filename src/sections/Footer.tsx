@@ -1,6 +1,5 @@
 import SplitTextLink from "@/components/SplitTextLink";
-import { navLinks } from "@/constants/navbar";
-import { socialLink } from "@/constants/socials";
+import { navLinks, socialLinks, footerHomeLink, footerContent } from "@/data";
 import React, { useEffect, useState } from "react";
 
 const Footer = () => {
@@ -9,7 +8,7 @@ const Footer = () => {
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
-      const formmated = now.toLocaleTimeString("en-IN", {
+      const formmated = now.toLocaleTimeString(footerContent.timeLocale, {
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
@@ -29,11 +28,11 @@ const Footer = () => {
       <div className="grid grid-cols-2 gap-4 ">
         <div className="menu flex flex-col gap-3 w-full">
           <h2 className="font-regular text-black-200 font-semibold flex flex-col gap-1 text-lg xl:text-2xl">
-            Menu
+            {footerContent.menuLabel}
             <hr className="text-white-100" />
           </h2>
           <ul className="flex flex-col gap-1">
-            <SplitTextLink text="Home" href="#" />
+            <SplitTextLink text={footerHomeLink.name} href={footerHomeLink.link} />
             {navLinks.map((item, index) => (
               <SplitTextLink key={index} text={item.name} href={item.link} />
             ))}
@@ -42,11 +41,11 @@ const Footer = () => {
 
         <div className="socials flex flex-col gap-3 w-full">
           <h2 className="font-regular text-black-200 font-semibold flex flex-col gap-1 text-lg xl:text-2xl">
-            Socials
+            {footerContent.socialsLabel}
             <hr className="text-white-100" />
           </h2>
           <ul className="flex flex-col gap-1">
-            {socialLink.map((item, index) => (
+            {socialLinks.map((item, index) => (
               <SplitTextLink key={index} text={item.name} href={item.link} />
             ))}
           </ul>
@@ -57,14 +56,14 @@ const Footer = () => {
         <div className="">
           <div className="">
             <h2 className="text-lg text-black-200 font-regular font-semibold uppercase">
-              Local Time
+              {footerContent.localTimeLabel}
             </h2>
           </div>
           <div className="leading-none tracking-wide">
             <span className="text-black-50 font-consola uppercase">
               {time},
             </span>
-            <span className="text-black-50 font-consola"> IST</span>
+            <span className="text-black-50 font-consola"> {footerContent.timezoneLabel}</span>
           </div>
         </div>
       </div>

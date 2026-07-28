@@ -1,6 +1,6 @@
 'use client';
 
-import { services } from '@/constants/services';
+import { services, servicesIntro } from '@/data';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
@@ -88,18 +88,15 @@ const Services = ({ ready }: { ready: boolean }) => {
             ref={headingRef}
             className='text-[3rem] leading-none uppercase text-background font-mmedium font-semibold sm:text-7xl md:text-8xl'
           >
-            What <br className='sm:hidden' /> I do /
+            {servicesIntro.headingLine1} <br className='sm:hidden' /> {servicesIntro.headingLine2}
           </h1>
         </div>
         <div className='flex flex-col gap-4 sm:grid sm:grid-cols-12'>
           <p className='text-white-200 sm:col-start-6 sm:col-span-2 md:col-start-6 md:col-span-1 lg:text-xl col-start-6'>
-            (SERVICES)
+            {servicesIntro.label}
           </p>
           <p className='text-white-100 font-regular leading-snug tracking-widest md:tracking-wide w-[90%] text-[1rem] sm:col-start-8 sm:col-span-5 md:col-start-8 sm:text-[1.3rem]  xl:w-[90%] xl:col-start-7 col-start-8 '>
-            Crafting fast, reliable, and expressive web experiences. I build
-            full-stack applications that blend performance, design, and
-            maintainability — handling frontend, backend, and deployment with a
-            focus on user experience and quality.
+            {servicesIntro.description}
           </p>
         </div>
       </div>

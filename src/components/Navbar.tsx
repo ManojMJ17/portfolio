@@ -1,7 +1,7 @@
 import SplitTextLink from "@/components/SplitTextLink";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { navLinks } from "@/constants/navbar";
+import { navLinks, personal } from "@/data";
 
 const Navbar = () => {
   const navbarRef = useRef(null);
@@ -30,7 +30,8 @@ const Navbar = () => {
     >
       <div className="flex justify-between w-full">
         <h1 className=" font-mmedium leading-snug text-black-50 text-[clamp(1rem,3vw,2rem)] md:text-xl lg:text-lg xl:text-[1.3rem] ">
-          Web Developer <br className="md:hidden" />& Designer
+          {personal.roleLine1} <br className="md:hidden" />
+          {personal.roleLine2}
         </h1>
 
         <ul className="flex flex-col md:flex-row gap-2 lg:gap-3 ">

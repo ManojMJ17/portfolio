@@ -3,7 +3,7 @@
 import gsap from 'gsap';
 import React, { useEffect, useRef } from 'react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { projects } from '@/constants/works';
+import { projects, projectsIntro, projectCategoryLabel } from '@/data';
 import SplitText from 'gsap/SplitText';
 import Scrambler from '@/components/Scrambler';
 
@@ -160,9 +160,9 @@ const Works = () => {
             className='invinsible text-[15vw] leading-none uppercase
          text-background font-mmedium font-semibold md:text-[9vw] md:pl-4 lg:text-[7vw]'
           >
-            <span className=''>Selected</span>
+            <span className=''>{projectsIntro.headingLine1}</span>
             <br className='md:hidden' />
-            <span className='pl-3'>Works /</span>
+            <span className='pl-3'>{projectsIntro.headingLine2}</span>
           </h1>
         </div>
 
@@ -176,7 +176,7 @@ const Works = () => {
             }}
             className='text-white-200 sm:col-start-6 sm:col-span-2 md:col-start-6 md:col-span-1 lg:text-xl col-start-6'
           >
-            (PROJECTS)
+            {projectsIntro.label}
           </p>
 
           <p
@@ -185,9 +185,7 @@ const Works = () => {
             }}
             className='text-white-100 font-mmedium leading-tight tracking-widest md:tracking-normal w-[90%] text-[1rem] sm:col-start-8 sm:col-span-5 md:col-start-8 sm:text-[1.3rem] lg:text-[1.5rem] xl:w-[60%] xl:text-[2rem] xl:col-start-8 col-start-8'
           >
-            A collection of purposeful digital builds — blending performance,
-            clarity, and user experience into clean, reliable tools and
-            platforms.
+            {projectsIntro.description}
           </p>
         </div>
       </div>
@@ -259,7 +257,7 @@ const Works = () => {
                   <div className='tech space-x-4 lg:self-end'>
                     <button className='border border-background rounded-xl px-2 xl:px-3 xl:py-1 xl:rounded-3xl'>
                       <span className='text-[0.7rem] xl:text-[1.2rem]'>
-                        DEVELOPMENT
+                        {projectCategoryLabel}
                       </span>
                     </button>
                     <button className='border border-background bg-white-100 rounded-3xl px-2 xl:px-3 xl:py-1 xl:rounded-3xl'>

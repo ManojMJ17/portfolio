@@ -3,6 +3,7 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast } from 'sonner';
+import { contact } from '@/data';
 
 const Contact = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -20,15 +21,15 @@ const Contact = () => {
 
     emailjs.sendForm(serviceId, templateId, form.current!, publicKey).then(
       () => {
-        toast.success('Thanks for reaching out.', {
-          description: "I'll get back to you as soon as possible.",
+        toast.success(contact.toast.successTitle, {
+          description: contact.toast.successDescription,
           duration: 1000,
         });
 
         form.current?.reset();
       },
       (error) => {
-        toast.error('Something went wrong, try again!');
+        toast.error(contact.toast.error);
         console.error(error.text);
       },
     );
@@ -44,7 +45,7 @@ rounded-lg flex flex-col gap-10 md:p-10 xl:p-16'
         >
           <div className='xl:mx-[18%]'>
             <h1 className='uppercase text-background font-mmedium font-semibold text-[14vw] text-center leading-none md:text-[10vw] md:px-20 md:text-center xl:text-[8vw] xl:tracking-tight '>
-              Let&apos;s make it happen
+              {contact.heading}
             </h1>
           </div>
 
@@ -52,7 +53,7 @@ rounded-lg flex flex-col gap-10 md:p-10 xl:p-16'
             <div className='px-4 py-10 md:p-10 xl:p-16 rounded-xl flex flex-col gap-5 bg-white/4 xl:gap-10'>
               <div>
                 <h3 className='text-background text-[8vw] font-mmedium text-center md:text-[4vw] xl:text-[2vw]'>
-                  Say Hello
+                  {contact.subheading}
                 </h3>
               </div>
 
@@ -67,7 +68,7 @@ rounded-lg flex flex-col gap-10 md:p-10 xl:p-16'
                       type='text'
                       name='name'
                       typeof='password'
-                      placeholder='Drop a name'
+                      placeholder={contact.formPlaceholders.name}
                       className='p-4 xl:px-6 font-consola tracking-wide text-white bg-white/6 text-lg w-full rounded-2xl xl:text-[2rem] placeholder:text-xs placeholder:tracking-tight md:placeholder:text-lg md:placeholder:tracking-wide'
                       required
                     />
@@ -76,7 +77,7 @@ rounded-lg flex flex-col gap-10 md:p-10 xl:p-16'
                     <input
                       type='email'
                       name='email'
-                      placeholder='Wanna hear back? Add your email'
+                      placeholder={contact.formPlaceholders.email}
                       className='p-4 xl:px-6 h-16 font-consola tracking-wide text-white bg-white/6 text-lg w-full rounded-2xl xl:text-[2rem] placeholder:text-xs placeholder:tracking-tight md:placeholder:text-lg md:placeholder:tracking-wide'
                       required
                     />
@@ -84,7 +85,7 @@ rounded-lg flex flex-col gap-10 md:p-10 xl:p-16'
                   <div className='relative'>
                     <textarea
                       name='message'
-                      placeholder='Say hello or drop a note...'
+                      placeholder={contact.formPlaceholders.message}
                       className='p-4 xl:px-6 h-32 font-consola tracking-wide text-white bg-white/6 text-lg w-full rounded-2xl resize-none xl:h-44 xl:text-[2rem] placeholder:text-xs placeholder:tracking-tight md:placeholder:text-lg md:placeholder:tracking-wide'
                       required
                     ></textarea>
@@ -94,7 +95,7 @@ rounded-lg flex flex-col gap-10 md:p-10 xl:p-16'
                       type='submit'
                       className='p-4 font-regular font-semibold bg-white text-black border-1 w-full rounded-2xl xl:text-[1.5rem] cursor-pointer'
                     >
-                      Send Message
+                      {contact.submitLabel}
                     </button>
                   </div>
                 </form>

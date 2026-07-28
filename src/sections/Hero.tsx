@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import Content from "./Content";
+import { personal } from "@/data";
 
 gsap.registerPlugin(SplitText);
 
@@ -121,8 +122,8 @@ const Hero = ({ startAnimation }: { startAnimation: boolean }) => {
           className="split px-7 opacity-0 font-semibold
                 text-6xl md:text-[12vw] xl:text-[12rem] md:text-center  text-black-100"
         >
-          MANOJ <br className="block md:hidden" />
-          KUMAR
+          {personal.firstName} <br className="block md:hidden" />
+          {personal.lastName}
         </h1>
       </div>
       {/* Content renders immediately and animates in parallel */}

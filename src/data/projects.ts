@@ -1,4 +1,17 @@
-export const projects = [
+import type { Project, SectionIntro } from "./types";
+
+export const projectsIntro: SectionIntro = {
+  label: "(PROJECTS)",
+  headingLine1: "Selected",
+  headingLine2: "Works /",
+  description:
+    "A collection of purposeful digital builds — blending performance, clarity, and user experience into clean, reliable tools and platforms.",
+};
+
+// Badge shown on every project card; all current projects share the same category.
+export const projectCategoryLabel = "DEVELOPMENT";
+
+export const projects: Project[] = [
   {
     id: "01",
     title: "clix",

@@ -7,4 +7,5 @@ export const socialLinks: SocialLink[] = [
   },
   { name: "Gmail", link: "mailto:manojkumarchilukoti@gmail.com" },
   { name: "Github", link: "https://github.com/ManojMJ17" },
+  { name: "Leetcode", link: "https://leetcode.com/u/ManojMJ17/" }
 ];

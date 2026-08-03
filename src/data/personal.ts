@@ -5,26 +5,27 @@ export const personal: PersonalInfo = {
   lastName: "KUMAR",
   fullName: "Manoj Kumar",
 
-  // Rendered as two lines in the Navbar brand mark (line break is responsive).
-  roleLine1: "Web Developer",
-  roleLine2: "& Designer",
+  roleLine1: "Software Engineer",
+  roleLine2: "",
 
   tagline:
-    "I'm a web developer passionate about crafting smooth, modern experiences with code and creativity.",
+    "Software Engineer passionate about building scalable applications with Java, Spring Boot, React, and modern web technologies.",
+
   aboutLabel: "(About me)",
+
   bioParagraphs: [
-    "I specialize in modern JavaScript ecosystems — working with frameworks like Next.js, React, and Node.js, and styling with Tailwind CSS and animation libraries like GSAP. I also explore AI/ML, having built models and tools using TensorFlow, Python, and Flask.",
-    "Beyond code, I enjoy collaborating, learning from real-world challenges, and contributing to projects that make a difference — whether it's for a user, a team, or the tech community.",
+    "I'm a Software Engineer with experience building full-stack applications using Java, Spring Boot, React, Next.js, Node.js, and TypeScript. I enjoy designing scalable backend systems, developing intuitive user interfaces, and creating software that solves real-world problems.",
+    "I have hands-on experience with microservices, REST APIs, Docker, PostgreSQL, MongoDB, and real-time applications. I'm always eager to learn new technologies, improve my engineering skills, and contribute to impactful software projects.",
   ],
 
-  // "AVAILABLE FOR" / "WORK" — split across two lines in the hero content block.
   availabilityLine1: "AVAILABLE FOR",
   availabilityLine2: "WORK",
 
-  // Hero intro paragraph, split at the point where the design forces a line break on xl screens.
   heroDescriptionLine1:
-    "Open to job opportunities worldwide. Passionate about building polished, intuitive,and thoughtful digital",
-  heroDescriptionLine2: "experiences that leave a mark.",
+    "Building full-stack applications with Java, Spring Boot, React, Next.js, and modern web technologies.",
+
+  heroDescriptionLine2:
+    "Passionate about writing clean, scalable software and solving real-world problems.",
 
   profileImage: {
     src: "/images/Caspar_David_Friedrich_-_Wanderer_above_the_Sea_of_Fog.jpeg",

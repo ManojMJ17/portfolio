@@ -1,43 +1,55 @@
 import type { SkillCategory } from "./types";
 
-// Big stacked headline rendered above the skills grid ("Developer" / "designer creator/").
-export const skillsHeadingLine1 = "Developer";
-export const skillsHeadingLine2 = "designer creator/";
+export const skillsHeadingLine1 = "Software";
+export const skillsHeadingLine2 = "engineer /";
 export const skillsSectionTitle = "Skills";
 
 export const skillCategories: SkillCategory[] = [
   {
     id: "languagesAndTools",
-    label: "Language & Tools",
+    label: "Languages & Tools",
     items: [
+      "Java",
+      "TypeScript",
+      "JavaScript",
       "Python",
       "SQL",
       "C++",
-      "Java",
-      "Typescript",
-      "JavaScript",
       "Git",
+      "GitHub",
       "Postman",
-      "MongoDB",
-      "Supabase",
     ],
   },
   {
-    id: "frameworksAndLibraries",
-    label: "Frameworks & Libraries",
+    id: "frameworksAndTechnologies",
+    label: "Frameworks & Technologies",
     items: [
+      "Spring Boot",
       "React",
+      "Next.js",
+      "React Native",
       "Node.js",
       "Express.js",
-      "Bootstrap",
-      "jQuery",
-      "TailwindCSS",
-      "GSAP",
+      "Tailwind CSS",
+      "Docker",
+      "PostgreSQL",
+      "MongoDB",
     ],
   },
   {
-    id: "coreCSConcepts",
-    label: "Core CS Concepts",
-    items: ["DSA", "DBMS", "OOP", "Operating Systems"],
+    id: "softwareEngineering",
+    label: "Software Engineering",
+    items: [
+      "Microservices",
+      "REST APIs",
+      "Spring Security",
+      "JWT",
+      "OpenFeign",
+      "API Gateway",
+      "Eureka",
+      "DSA",
+      "OOP",
+      "DBMS",
+    ],
   },
 ];

@@ -96,9 +96,8 @@ const ScrambledSplitText = ({
   return (
     <div className="h-[20px] md:h-[30px] lg:h-[32px] xl:h-[34px] overflow-hidden">
       <div
-        className={`relative block h-full cursor-pointer ${
-          color ?? "text-black-50"
-        }`}
+        className={`relative block h-full cursor-pointer ${color ?? "text-black-50"
+          }`}
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
         onClick={() => {

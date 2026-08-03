@@ -3,43 +3,41 @@ import type { SectionIntro, Service } from "./types";
 export const servicesIntro: SectionIntro = {
   label: "(SERVICES)",
   headingLine1: "What",
-  headingLine2: "I do /",
+  headingLine2: "I build /",
   description:
-    "Crafting fast, reliable, and expressive web experiences. I build full-stack applications that blend performance, design, and maintainability — handling frontend, backend, and deployment with a focus on user experience and quality.",
+    "I build scalable software solutions across the full stack—from robust backend systems to responsive frontend applications. My focus is on clean architecture, performance, and delivering reliable user experiences.",
 };
 
 export const services: Service[] = [
   {
     sno: "(01)",
     title: "Full-Stack Development",
-    description: `From UI to deployment — I build end-to-end solutions.
-I develop full-featured applications using modern web technologies, ensuring clean code architecture and smooth user interactions.`,
+    description: `Building scalable end-to-end applications with modern frontend and backend technologies, emphasizing clean architecture, performance, and intuitive user experiences.`,
     technologies: [
-      { sno: "01", stack: " React, Next.js, Node.js, Express" },
-      { sno: "02", stack: "REST APIs, Supabase, MongoDB" },
-      { sno: "03", stack: "Git, GitHub, Postman" },
+      { sno: "01", stack: "Java, Spring Boot, React, Next.js" },
+      { sno: "02", stack: "Node.js, Express, TypeScript" },
+      { sno: "03", stack: "PostgreSQL, MongoDB, REST APIs" },
     ],
   },
   {
     sno: "(02)",
-    title: " UI/UX & Frontend",
-    description: `Not just pixels — it’s about interaction.
-I blend animations, clarity, and accessibility to craft interfaces that feel responsive and human. I turn designs into scalable frontends that adapt across screen sizes.`,
+    title: "Backend Systems",
+    description:
+      "Designing secure, scalable backend systems using microservices, caching, service discovery, and containerized deployments.",
     technologies: [
-      { sno: "01", stack: " TailwindCSS, GSAP" },
-      { sno: "02", stack: "THREE.js" },
-      { sno: "03", stack: "HTML, CSS, JavaScript" },
+      { sno: "01", stack: "Java, Spring Boot, Spring Security" },
+      { sno: "02", stack: "Microservices, OpenFeign, Eureka" },
+      { sno: "03", stack: "Redis, Docker, API Gateway, Load Balancing" },
     ],
   },
   {
     sno: "(03)",
-    title: "Optimization",
-    description: `Code that doesn’t just work — it works efficiently.
-I care about speed and structure, leveraging core computer science principles to solve real-world problems and write scalable code.`,
+    title: "Software Engineering",
+    description: `Applying strong computer science fundamentals to build reliable, maintainable, and production-ready software.`,
     technologies: [
-      { sno: "01", stack: " Data Structures & Algorithms" },
-      { sno: "02", stack: "DBMS, Operating Systems, OOP" },
-      { sno: "03", stack: "Optimization, ETL, Logic Building" },
+      { sno: "01", stack: "Java, Data Structures & Algorithms" },
+      { sno: "02", stack: "OOP, DBMS, Operating Systems" },
+      { sno: "03", stack: "Git, GitHub, Postman" },
     ],
   },
 ];

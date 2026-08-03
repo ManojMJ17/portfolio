@@ -36,6 +36,8 @@ export interface Project {
   href: string;
   img: string;
   video: string;
+  /** Demo video format. "web" (default) renders landscape 16:9; "mobile" renders portrait 9:16. */
+  type?: 'web' | 'mobile';
 }
 
 export interface ProfileImage {

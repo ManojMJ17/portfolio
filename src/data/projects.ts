@@ -28,7 +28,7 @@ export const projects: Project[] = [
     year: "2025",
     href: "https://github.com/ManojMJ17/clix",
     img: "/images/linux2.jpeg",
-    video: "/videos/clix-demo.mp4",
+    video: "/videos/clix_demo.mp4",
   },
   {
     id: "03",

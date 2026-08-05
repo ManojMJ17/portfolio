@@ -10,13 +10,13 @@ gsap.registerPlugin(SplitText);
 
 const Hero = ({ startAnimation }: { startAnimation: boolean }) => {
   const heroRef = useRef<HTMLHeadingElement>(null);
-  const splitRef = useRef<any>(null);
+  const splitRef = useRef<InstanceType<typeof SplitText> | null>(null);
 
   // Split characters on initial mount in background
   useEffect(() => {
     if (!heroRef.current) return;
 
-    let ctx: any;
+    let ctx: ReturnType<typeof gsap.context> | undefined;
 
     const runSplit = () => {
       ctx = gsap.context(() => {
@@ -29,7 +29,7 @@ const Hero = ({ startAnimation }: { startAnimation: boolean }) => {
         splitRef.current = split;
 
         // Wrap characters
-        split.chars.forEach((char: any) => {
+        split.chars.forEach((char: Element) => {
           const wrapper = document.createElement("div");
           wrapper.style.overflow = "hidden";
           wrapper.style.display = "inline-block";
@@ -64,7 +64,7 @@ const Hero = ({ startAnimation }: { startAnimation: boolean }) => {
   useEffect(() => {
     if (!startAnimation) return;
 
-    let ctx: any;
+    let ctx: ReturnType<typeof gsap.context> | undefined;
 
     const playReveal = () => {
       ctx = gsap.context(() => {
@@ -77,7 +77,7 @@ const Hero = ({ startAnimation }: { startAnimation: boolean }) => {
           splitRef.current = split;
 
           // Wrap characters
-          split.chars.forEach((char: any) => {
+          split.chars.forEach((char: Element) => {
             const wrapper = document.createElement("div");
             wrapper.style.overflow = "hidden";
             wrapper.style.display = "inline-block";

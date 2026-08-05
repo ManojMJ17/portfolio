@@ -50,7 +50,7 @@ const Works = () => {
   const digitRef = useRef<HTMLDivElement>(null);
 
   const headingRef = useRef(null);
-  const splitRef = useRef<any>(null);
+  const splitRef = useRef<InstanceType<typeof SplitText> | null>(null);
 
   const headerBelowRef = useRef(null);
   const projectsLabelRef = useRef<HTMLParagraphElement | null>(null);

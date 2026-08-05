@@ -3,7 +3,7 @@ import { navLinks, socialLinks, footerHomeLink, footerContent } from "@/data";
 import React, { useEffect, useState } from "react";
 
 const Footer = () => {
-  const [time, setTime] = useState<String>("");
+  const [time, setTime] = useState<string>("");
 
   useEffect(() => {
     const updateTime = () => {
@@ -46,7 +46,7 @@ const Footer = () => {
           </h2>
           <ul className="flex flex-col gap-1">
             {socialLinks.map((item, index) => (
-              <SplitTextLink key={index} text={item.name} href={item.link} />
+              <SplitTextLink key={index} text={item.name} href={item.link} newTab />
             ))}
           </ul>
         </div>

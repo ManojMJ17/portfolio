@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "@geist-ui/icons";
 import React from "react";
 import SplitTextLink from "./SplitTextLink";
-import gsap from "gsap";
+import { scrollToHash } from "@/lib/scrollSmoother";
 
 const Button = ({ title, href }: { title: string; href: string }) => {
   return (
@@ -14,17 +14,7 @@ const Button = ({ title, href }: { title: string; href: string }) => {
         onClick={(e) => {
           if (href && href.startsWith("#")) {
             e.preventDefault();
-            const ScrollSmoother = (window as any).ScrollSmoother || (gsap as any).ScrollSmoother;
-            const smoother = ScrollSmoother?.get();
-            if (smoother) {
-              smoother.scrollTo(href, true);
-            } else {
-              const element = document.querySelector(href);
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-              }
-            }
-            window.history.pushState(null, "", href);
+            scrollToHash(href);
           }
         }}
       >

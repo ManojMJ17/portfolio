@@ -9,7 +9,7 @@ import { isValidElement, cloneElement } from "react";
 gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
 
 interface ScramblerProps {
-  children: React.ReactElement;
+  children: React.ReactElement<{ ref?: React.Ref<HTMLElement> }>;
 }
 
 const Scrambler = ({ children }: ScramblerProps) => {

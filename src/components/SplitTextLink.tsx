@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 import React, { useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import { scrollToHash } from '@/lib/scrollSmoother';
 
 const SplitTextLink = ({
   text,
@@ -11,19 +12,21 @@ const SplitTextLink = ({
   color,
   classname,
   as,
+  newTab,
 }: {
   text: string;
   href?: string;
   color?: string;
   classname?: string;
   as?: 'a' | 'div';
+  newTab?: boolean;
 }) => {
   const Component = as ?? 'a';
-  const containerRef = useRef<any>(null);
+  const containerRef = useRef<HTMLAnchorElement | HTMLDivElement>(null);
   const topRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
-  const topSplit = useRef<any>(null);
-  const bottomSplit = useRef<any>(null);
+  const topSplit = useRef<InstanceType<typeof SplitText> | null>(null);
+  const bottomSplit = useRef<InstanceType<typeof SplitText> | null>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -84,28 +87,22 @@ const SplitTextLink = ({
   return (
     <div className='h-[20px] md:h-[30px] overflow-hidden w-fit'>
       <Component
-        ref={containerRef as any}
+        ref={(node: HTMLAnchorElement | HTMLDivElement | null) => {
+          containerRef.current = node;
+        }}
         href={Component === 'a' ? href : undefined}
+        target={Component === 'a' && newTab ? '_blank' : undefined}
+        rel={Component === 'a' && newTab ? 'noopener noreferrer' : undefined}
         className={`relative block h-full cursor-pointer ${
           color ?? 'text-black-50'
         }`}
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
         onClick={(e) => {
-          if (href) {
+          if (href && !newTab) {
             if (href.startsWith('#')) {
               e.preventDefault();
-              const ScrollSmoother = (window as any).ScrollSmoother || (gsap as any).ScrollSmoother;
-              const smoother = ScrollSmoother?.get();
-              if (smoother) {
-                smoother.scrollTo(href, true);
-              } else {
-                const element = document.querySelector(href);
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
-                }
-              }
-              window.history.pushState(null, '', href);
+              scrollToHash(href);
             } else {
               router.push(href);
             }

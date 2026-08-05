@@ -1,6 +1,6 @@
 'use client';
 
-import { services, servicesIntro } from '@/data';
+import { services } from '@/data';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Services = ({ ready }: { ready: boolean }) => {
   const stackRef = useRef<HTMLDivElement>(null);
 
-  const splitRef = useRef<any>(null);
+  const splitRef = useRef<InstanceType<typeof SplitText> | null>(null);
   const headingRef = useRef(null);
 
   // Heading split text animation

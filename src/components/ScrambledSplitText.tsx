@@ -22,8 +22,8 @@ const ScrambledSplitText = ({
 }) => {
   const topRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
-  const topSplit = useRef<any>(null);
-  const bottomSplit = useRef<any>(null);
+  const topSplit = useRef<InstanceType<typeof SplitText> | null>(null);
+  const bottomSplit = useRef<InstanceType<typeof SplitText> | null>(null);
   const router = useRouter();
 
   // === Scramble on Scroll ===
@@ -65,7 +65,7 @@ const ScrambledSplitText = ({
       topSplit.current?.revert();
       bottomSplit.current?.revert();
     };
-  }, []);
+  }, [text]);
 
   const handleEnter = () => {
     if (!topSplit.current || !bottomSplit.current) return;

@@ -70,9 +70,7 @@ const Page = () => {
 
       const { ScrollSmoother } = await import("gsap/ScrollSmoother");
       gsap.registerPlugin(ScrollSmoother);
-      if (typeof window !== "undefined") {
-        (window as any).ScrollSmoother = ScrollSmoother;
-      }
+      window.ScrollSmoother = ScrollSmoother;
 
       ScrollSmoother.create({
         wrapper: "#wrapper",

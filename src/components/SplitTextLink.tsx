@@ -112,14 +112,14 @@ const SplitTextLink = ({
         <div
           ref={topRef}
           className={`top-0 left-0 w-full font-mmedium
-                  text-[1rem] md:text-1xl lg:text-lg xl:text-xl flex items-center  ${classname}`}
+                  text-[1rem] md:text-1xl lg:text-lg xl:text-xl flex items-center gap-x-[0.25em]  ${classname}`}
         >
           {text}
         </div>
         <div
           ref={bottomRef}
           className={`top-full left-0 w-full font-mmedium
-                  text-[1rem] md:text-1xl lg:text-lg xl:text-xl flex items-center ${classname}`}
+                  text-[1rem] md:text-1xl lg:text-lg xl:text-xl flex items-center gap-x-[0.25em] ${classname}`}
         >
           {text}
         </div>

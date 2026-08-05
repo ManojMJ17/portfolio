@@ -38,6 +38,50 @@
   /* contact */
 
   --color-contact: #393632;
+
+  /* 404 page motion */
+  --animate-nf-float: nf-float 6s ease-in-out infinite;
+  --animate-nf-blink: nf-blink 1.1s step-end infinite;
+  --animate-nf-glow: nf-glow 8s ease-in-out infinite;
+}
+
+@keyframes nf-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes nf-blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes nf-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-nf-float,
+  .animate-nf-blink,
+  .animate-nf-glow {
+    animation: none;
+  }
 }
 
 body {

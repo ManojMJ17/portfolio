@@ -5,12 +5,13 @@ import { scrollToHash } from "@/lib/scrollSmoother";
 
 const Button = ({ title, href }: { title: string; href: string }) => {
   return (
-    <div className="w-[8rem] md:w-[10rem] xl:w-[12rem]">
+    <div className="w-fit min-w-[8rem] md:min-w-[10rem] xl:min-w-[12rem]">
       <a
         href={href}
-        className="group relative flex justify-center items-center
+        className="group relative flex justify-center items-center whitespace-nowrap
               px-8 py-4  xl:px-7 xl:py-5 rounded-[4rem] text-white uppercase bg-black-200
-             transition-colors duration-300"
+             transition-colors duration-300 focus-visible:outline-2
+             focus-visible:outline-offset-2 focus-visible:outline-black-200"
         onClick={(e) => {
           if (href && href.startsWith("#")) {
             e.preventDefault();

@@ -24,6 +24,8 @@ const Scrambler = ({ children }: ScramblerProps) => {
     // Make sure the original text is set before animating
     el.textContent = originalText;
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     gsap.to(el, {
       scrambleText: {
         text: originalText,

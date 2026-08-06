@@ -36,7 +36,9 @@ const Navbar = () => {
 
         <ul className="flex flex-col md:flex-row gap-2 lg:gap-3 ">
           {navLinks.map((item, index) => (
-            <SplitTextLink key={index} text={item.name} href={item.link} />
+            <li key={index}>
+              <SplitTextLink text={item.name} href={item.link} />
+            </li>
           ))}
         </ul>
       </div>

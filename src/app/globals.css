@@ -19,7 +19,9 @@
   --color-white-50: #565633;
 
   /* /////  NAVBAR   */
-  --color-black-50: #6b645c;
+  /* Darkened from #6b645c — was 4.74:1 on --color-background, too close to
+     the 4.5:1 AA floor for shared body text (Navbar role, footer, nav links). */
+  --color-black-50: #676159;
 
   /* hero text */
   --color-black-100: #171717;
@@ -29,7 +31,9 @@
 
   --color-white-100: #a29e9a;
 
-  --color-white-200: #7e766c;
+  /* Lightened from #7e766c — was 4.70:1 on pure black, too close to the
+     4.5:1 AA floor for shared body text (section labels, tech-stack rows). */
+  --color-white-200: #837a70;
 
   /* about */
   --color-about: #e6e8e3;

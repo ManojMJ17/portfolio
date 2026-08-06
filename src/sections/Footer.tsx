@@ -32,9 +32,13 @@ const Footer = () => {
             <hr className="text-white-100" />
           </h2>
           <ul className="flex flex-col gap-1">
-            <SplitTextLink text={footerHomeLink.name} href={footerHomeLink.link} />
+            <li>
+              <SplitTextLink text={footerHomeLink.name} href={footerHomeLink.link} />
+            </li>
             {navLinks.map((item, index) => (
-              <SplitTextLink key={index} text={item.name} href={item.link} />
+              <li key={index}>
+                <SplitTextLink text={item.name} href={item.link} />
+              </li>
             ))}
           </ul>
         </div>
@@ -46,7 +50,9 @@ const Footer = () => {
           </h2>
           <ul className="flex flex-col gap-1">
             {socialLinks.map((item, index) => (
-              <SplitTextLink key={index} text={item.name} href={item.link} newTab />
+              <li key={index}>
+                <SplitTextLink text={item.name} href={item.link} newTab />
+              </li>
             ))}
           </ul>
         </div>

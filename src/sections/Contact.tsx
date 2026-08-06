@@ -3,7 +3,7 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { toast } from 'sonner';
-import { contact } from '@/data';
+import { contact, contactLink } from '@/data';
 
 const Contact = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -36,7 +36,11 @@ const Contact = () => {
   };
 
   return (
-    <div id='contact' className='mt-[20%] lg:-mt-[20%] xl:-mt-[12%]'>
+    <section
+      id='contact'
+      aria-label={contactLink.name}
+      className='mt-[20%] lg:-mt-[20%] xl:-mt-[12%]'
+    >
       <div className='w-full flex justify-center'>
         <div
           className='p-8 w-[90%] max-w-[1200px] mx-auto
@@ -52,9 +56,9 @@ rounded-lg flex flex-col gap-10 md:p-10 xl:p-16'
           <div className='w-full max-w-[650px] mx-auto'>
             <div className='px-4 py-10 md:p-10 xl:p-16 rounded-xl flex flex-col gap-5 bg-white/4 xl:gap-10'>
               <div>
-                <h3 className='text-background text-[8vw] font-mmedium text-center md:text-[4vw] xl:text-[2vw]'>
+                <h2 className='text-background text-[8vw] font-mmedium text-center md:text-[4vw] xl:text-[2vw]'>
                   {contact.subheading}
-                </h3>
+                </h2>
               </div>
 
               <div className='relative px-2 '>
@@ -104,7 +108,7 @@ rounded-lg flex flex-col gap-10 md:p-10 xl:p-16'
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import SplitText from "gsap/SplitText";
-import Content from "./Content";
-import { personal } from "@/data";
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import SplitText from 'gsap/SplitText';
+import Content from './Content';
+import { personal } from '@/data';
 
 gsap.registerPlugin(SplitText);
 
@@ -23,18 +23,18 @@ const Hero = ({ startAnimation }: { startAnimation: boolean }) => {
         if (splitRef.current) splitRef.current.revert();
 
         const split = new SplitText(heroRef.current, {
-          type: "chars",
-          charsClass: "char",
+          type: 'chars',
+          charsClass: 'char',
         });
         splitRef.current = split;
 
         // Wrap characters
         split.chars.forEach((char: Element) => {
-          const wrapper = document.createElement("div");
-          wrapper.style.overflow = "hidden";
-          wrapper.style.display = "inline-block";
-          wrapper.style.verticalAlign = "bottom";
-          wrapper.style.position = "relative";
+          const wrapper = document.createElement('div');
+          wrapper.style.overflow = 'hidden';
+          wrapper.style.display = 'inline-block';
+          wrapper.style.verticalAlign = 'bottom';
+          wrapper.style.position = 'relative';
           char.parentNode?.insertBefore(wrapper, char);
           wrapper.appendChild(char);
         });
@@ -46,7 +46,7 @@ const Hero = ({ startAnimation }: { startAnimation: boolean }) => {
     };
 
     // Run synchronously if fonts already loaded, otherwise wait
-    if (document.fonts && document.fonts.status === "loaded") {
+    if (document.fonts && document.fonts.status === 'loaded') {
       runSplit();
     } else if (document.fonts) {
       document.fonts.ready.then(runSplit);
@@ -71,18 +71,18 @@ const Hero = ({ startAnimation }: { startAnimation: boolean }) => {
         if (!splitRef.current) {
           // Fallback split if not split yet
           const split = new SplitText(heroRef.current, {
-            type: "chars",
-            charsClass: "char",
+            type: 'chars',
+            charsClass: 'char',
           });
           splitRef.current = split;
 
           // Wrap characters
           split.chars.forEach((char: Element) => {
-            const wrapper = document.createElement("div");
-            wrapper.style.overflow = "hidden";
-            wrapper.style.display = "inline-block";
-            wrapper.style.verticalAlign = "bottom";
-            wrapper.style.position = "relative";
+            const wrapper = document.createElement('div');
+            wrapper.style.overflow = 'hidden';
+            wrapper.style.display = 'inline-block';
+            wrapper.style.verticalAlign = 'bottom';
+            wrapper.style.position = 'relative';
             char.parentNode?.insertBefore(wrapper, char);
             wrapper.appendChild(char);
           });
@@ -95,13 +95,13 @@ const Hero = ({ startAnimation }: { startAnimation: boolean }) => {
           opacity: 1,
           stagger: 0.05,
           duration: 1.2,
-          ease: "power4.out",
+          ease: 'power4.out',
         });
       });
     };
 
     // Run when fonts are loaded
-    if (document.fonts && document.fonts.status === "loaded") {
+    if (document.fonts && document.fonts.status === 'loaded') {
       playReveal();
     } else if (document.fonts) {
       document.fonts.ready.then(playReveal);
@@ -115,14 +115,14 @@ const Hero = ({ startAnimation }: { startAnimation: boolean }) => {
   }, [startAnimation]);
 
   return (
-    <section className="flex flex-col pt-4 md:gap-10 xl:gap-4">
-      <div className="w-full">
+    <section className='flex flex-col pt-4 md:gap-10 xl:gap-4'>
+      <div className='w-full'>
         <h1
           ref={heroRef}
-          className="split px-7 opacity-0 font-semibold
-                text-6xl md:text-[12vw] xl:text-[12rem] md:text-center  text-black-100"
+          className='split px-7 opacity-0 font-mmedium
+                text-6xl md:text-[12vw] xl:text-[12rem] md:text-center  text-black-100'
         >
-          {personal.firstName} <br className="block md:hidden" />
+          {personal.firstName} <br className='block md:hidden' />
           {personal.lastName}
         </h1>
       </div>

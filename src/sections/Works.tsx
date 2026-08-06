@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { projects, projectsIntro, projectCategoryLabel } from '@/data';
 import SplitText from 'gsap/SplitText';
 import Scrambler from '@/components/Scrambler';
+import ProjectVideo from '@/components/ProjectVideo';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -261,27 +262,7 @@ const Works = () => {
                   key={index}
                   className={`space-y-4 mb-14 sm:mb-16 lg:mb-20 project-${index}`}
                 >
-                  <a
-                    href={project.href}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className={frame.container}
-                  >
-                    <div
-                      className='absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30'
-                      style={{ backgroundImage: `url(${project.img})` }}
-                    />
-                    <div className={frame.wrapper}>
-                      <video
-                        src={project.video}
-                        className={frame.video}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                      />
-                    </div>
-                  </a>
+                  <ProjectVideo project={project} frame={frame} />
 
                   <div className='bio flex flex-col gap-3 sm:gap-4 lg:flex-row lg:justify-between'>
                     <div className='title flex flex-col gap-1'>

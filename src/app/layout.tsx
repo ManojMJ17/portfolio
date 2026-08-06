@@ -39,7 +39,7 @@ const consola = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://manoj-kumar.me'),
+  metadataBase: new URL('https://www.manoj-kumar.me'),
 
   manifest: '/manifest.webmanifest',
 
@@ -107,8 +107,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/og-image.png',
-        width: 1200,
-        height: 630,
+        width: 1729,
+        height: 910,
         alt: 'Manoj Kumar Portfolio',
       },
     ],

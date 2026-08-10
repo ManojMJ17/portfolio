@@ -61,7 +61,6 @@ export const metadata: Metadata = {
     'React',
     'Next.js',
     'TypeScript',
-    'React Native',
     'Microservices',
     'Docker',
     'PostgreSQL',
@@ -103,7 +102,7 @@ export const metadata: Metadata = {
     siteName: 'Manoj Kumar Portfolio',
     title: 'Manoj Kumar | Software Engineer',
     description:
-      'Portfolio showcasing Java, Spring Boot, React, Next.js, Microservices, React Native, and Full-Stack Development projects.',
+      'Portfolio showcasing Java, Spring Boot, React, Next.js, Microservices, and Full-Stack Development projects.',
     images: [
       {
         url: '/og-image.png',
@@ -118,7 +117,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Manoj Kumar | Software Engineer',
     description:
-      'Portfolio showcasing Java, Spring Boot, React, Next.js, Microservices, React Native, and Full-Stack Development projects.',
+      'Portfolio showcasing Java, Spring Boot, React, Next.js, Microservices, and Full-Stack Development projects.',
     images: ['/og-image.png'],
   },
 

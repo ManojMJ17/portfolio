@@ -41,43 +41,25 @@ const consola = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.manoj-kumar.me'),
 
-  manifest: '/manifest.webmanifest',
-
   title: {
-    default: 'Manoj Kumar | Software Engineer',
-    template: '%s | Manoj Kumar',
+    default: 'Manoj Kumar Chilukoti | Software Engineer',
+    template: '%s | Manoj Kumar Chilukoti',
   },
 
   description:
-    'Portfolio of Manoj Kumar, a Software Engineer specializing in Java, Spring Boot, React, Next.js, Microservices, and Full-Stack Development.',
+    'Manoj Kumar Chilukoti is a Software Engineer specializing in Java, Spring Boot, React, Next.js, TypeScript, Microservices, and full-stack development.',
 
-  applicationName: 'Manoj Kumar Portfolio',
-
-  keywords: [
-    'Manoj Kumar',
-    'Software Engineer',
-    'Java Developer',
-    'Spring Boot',
-    'React',
-    'Next.js',
-    'TypeScript',
-    'Microservices',
-    'Docker',
-    'PostgreSQL',
-    'MongoDB',
-    'Full Stack Developer',
-    'Portfolio',
-  ],
+  applicationName: 'Manoj Kumar Chilukoti Portfolio',
 
   authors: [
     {
-      name: 'Manoj Kumar',
+      name: 'Manoj Kumar Chilukoti',
       url: 'https://www.manoj-kumar.me',
     },
   ],
 
-  creator: 'Manoj Kumar',
-  publisher: 'Manoj Kumar',
+  creator: 'Manoj Kumar Chilukoti',
+  publisher: 'Manoj Kumar Chilukoti',
 
   alternates: {
     canonical: 'https://www.manoj-kumar.me',
@@ -99,25 +81,25 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://www.manoj-kumar.me',
-    siteName: 'Manoj Kumar Portfolio',
-    title: 'Manoj Kumar | Software Engineer',
+    siteName: 'Manoj Kumar Chilukoti',
+    title: 'Manoj Kumar Chilukoti | Software Engineer',
     description:
-      'Portfolio showcasing Java, Spring Boot, React, Next.js, Microservices, and Full-Stack Development projects.',
+      'Portfolio of Manoj Kumar Chilukoti, a Software Engineer specializing in Java, Spring Boot, React, Next.js, TypeScript, Microservices, and full-stack development.',
     images: [
       {
         url: '/og-image.png',
         width: 1729,
         height: 910,
-        alt: 'Manoj Kumar Portfolio',
+        alt: 'Manoj Kumar Chilukoti | Software Engineer',
       },
     ],
   },
 
   twitter: {
     card: 'summary_large_image',
-    title: 'Manoj Kumar | Software Engineer',
+    title: 'Manoj Kumar Chilukoti | Software Engineer',
     description:
-      'Portfolio showcasing Java, Spring Boot, React, Next.js, Microservices, and Full-Stack Development projects.',
+      'Portfolio of Manoj Kumar Chilukoti, a Software Engineer specializing in Java, Spring Boot, React, Next.js, TypeScript, Microservices, and full-stack development.',
     images: ['/og-image.png'],
   },
 
@@ -137,6 +119,8 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-touch-icon.png',
   },
+
+  manifest: '/manifest.webmanifest',
 };
 
 export default function RootLayout({

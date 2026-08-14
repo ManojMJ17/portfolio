@@ -88,8 +88,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/og-image.png',
-        width: 1729,
-        height: 910,
+        width: 1200,
+        height: 630,
         alt: 'Manoj Kumar Chilukoti | Software Engineer',
       },
     ],

@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(curl -s https://www.manoj-kumar.me/ -o /tmp/live.html)",
+      "Read(//tmp/**)",
+      "Bash(sed 's/<script[^>]*>//;s/<\\\\/script>//')",
+      "Bash(node -e \"const d = require\\('/tmp/jsonld.json'\\); console.log\\(JSON.stringify\\(d, null, 2\\)\\);\")"
     ]
   }
 }

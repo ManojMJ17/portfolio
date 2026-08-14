@@ -5,46 +5,32 @@ export default function JsonLd() {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'Person',
-        '@id': `${SITE_URL}/#person`,
-        name: 'Manoj Kumar Chilukoti',
-        alternateName: 'Manoj Kumar',
+        '@type': 'ProfilePage',
+        '@id': `${SITE_URL}/#profilepage`,
         url: SITE_URL,
-        image: `${SITE_URL}/og-image.png`,
-        jobTitle: 'Software Engineer',
-        description:
-          'Manoj Kumar Chilukoti is a Software Engineer specializing in Java, Spring Boot, React, Next.js, TypeScript, Microservices, and full-stack development.',
-
-        email: 'mailto:manojkumarchilukoti@gmail.com',
-
-        sameAs: [
-          'https://github.com/ManojMJ17',
-          'https://www.linkedin.com/in/manoj-kumar-b35ab6348',
-          'https://leetcode.com/u/ManojMJ17/',
-        ],
-
-        knowsAbout: [
-          'Java',
-          'Spring Boot',
-          'Spring Security',
-          'Microservices',
-          'Docker',
-          'React',
-          'Next.js',
-          'React Native',
-          'TypeScript',
-          'JavaScript',
-          'Node.js',
-          'Express.js',
-          'PostgreSQL',
-          'MongoDB',
-          'REST APIs',
-          'OpenFeign',
-          'API Gateway',
-          'Eureka',
-        ],
-
-        mainEntityOfPage: SITE_URL,
+        name: 'Manoj Kumar Chilukoti | Software Engineer',
+        mainEntity: {
+          '@type': 'Person',
+          '@id': `${SITE_URL}/#person`,
+          name: 'Manoj Kumar Chilukoti',
+          alternateName: 'Manoj Kumar',
+          url: SITE_URL,
+          image: {
+            '@type': 'ImageObject',
+            '@id': `${SITE_URL}/#primaryimage`,
+            url: `${SITE_URL}/og-image.png`,
+            caption: 'Manoj Kumar Chilukoti',
+          },
+          jobTitle: 'Software Engineer',
+          description:
+            'Manoj Kumar Chilukoti is a Software Engineer specializing in Java, Spring Boot, React, Next.js, TypeScript, Microservices, and full-stack development.',
+          email: 'mailto:manojkumarchilukoti@gmail.com',
+          sameAs: [
+            'https://github.com/ManojMJ17',
+            'https://www.linkedin.com/in/manoj-kumar-b35ab6348',
+            'https://leetcode.com/u/ManojMJ17/',
+          ],
+        },
       },
       {
         '@type': 'WebSite',
@@ -54,7 +40,6 @@ export default function JsonLd() {
         description:
           'Portfolio of Manoj Kumar Chilukoti, a Software Engineer specializing in Java, Spring Boot, React, Next.js, TypeScript, Microservices, and full-stack development.',
         inLanguage: 'en-US',
-        author: { '@id': `${SITE_URL}/#person` },
         publisher: { '@id': `${SITE_URL}/#person` },
       },
     ],

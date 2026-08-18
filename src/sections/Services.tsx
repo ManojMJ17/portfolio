@@ -135,7 +135,7 @@ const Services = ({ ready }: { ready: boolean }) => {
                           {service.technologies.map((tech, index) => (
                             <div key={index} className='flex flex-col gap-6'>
                               <div className='flex items-center gap-4 xl:gap-10'>
-                                <p className='text-white-200 font-consola md:text-xl xl:text-3xl'>
+                                <p className='text-white-200 font-mono-custom md:text-xl xl:text-3xl'>
                                   {tech.sno}
                                 </p>
                                 <p className='font-regular text-[1.3rem] font-bold tracking-wide md:text-2xl xl:text-4xl'>

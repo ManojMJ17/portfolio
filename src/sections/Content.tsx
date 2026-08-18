@@ -168,7 +168,7 @@ const Content = ({ startAnimation }: { startAnimation: boolean }) => {
         <div className="flex flex-col items-end justify-end">
           <p
             ref={workRef}
-            className="text-[1rem] md:text-[1rem] xl:text-[1rem] capitalize text-black-50 font-consola leading-none flex text-end"
+            className="text-[1rem] md:text-[1rem] xl:text-[1rem] capitalize text-black-50 font-mono-custom leading-none flex text-end"
           >
             {personal.availabilityLine1} <br className="block md:hidden" />
             {personal.availabilityLine2}

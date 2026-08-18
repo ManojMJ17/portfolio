@@ -25,7 +25,7 @@ const About = () => {
           </div>
           <div className="flex flex-col gap-4 lg:flex-row lg:gap-10 xl:gap-16 xl:w-[80%]">
             <div className="lg:w-full lg:tracking-tighter">
-              <p className="text-white-100 font-consola uppercase lg:text-[1rem] xl:text-[1.8rem]">
+              <p className="text-white-100 font-mono-custom uppercase lg:text-[1rem] xl:text-[1.8rem]">
                 {personal.aboutLabel}
               </p>
             </div>

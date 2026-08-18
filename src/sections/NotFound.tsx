@@ -82,7 +82,7 @@ const NotFound = () => {
       >
         <p
           aria-hidden='true'
-          className='inline-flex items-end font-consola leading-none tracking-tight text-black-100
+          className='inline-flex items-end font-mono-custom leading-none tracking-tight text-black-100
             text-[5.5rem] sm:text-[7rem] md:text-[9rem] xl:text-[11rem]'
         >
           404

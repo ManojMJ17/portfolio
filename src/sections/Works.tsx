@@ -231,7 +231,7 @@ const Works = () => {
           className='hidden md:block absolute top-0 left-0 w-[15%] z-10'
         >
           <div className='h-full flex items-start pt-20'>
-            <div className='flex text-[22vw] text-white-200 font-consola leading-none'>
+            <div className='flex text-[22vw] text-white-200 font-mono-custom leading-none'>
               <span>0</span>
               <div className='relative h-[22vw] overflow-hidden w-[1ch]'>
                 <div ref={digitRef}>
@@ -266,7 +266,7 @@ const Works = () => {
 
                   <div className='bio flex flex-col gap-3 sm:gap-4 lg:flex-row lg:justify-between'>
                     <div className='title flex flex-col gap-1'>
-                      <p className='font-consola text-white-100 text-sm sm:text-base xl:text-[1.5rem]'>
+                      <p className='font-mono-custom text-white-100 text-sm sm:text-base xl:text-[1.5rem]'>
                         <Scrambler>
                           <span>{project.title}</span>
                         </Scrambler>

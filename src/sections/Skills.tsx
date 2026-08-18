@@ -50,7 +50,7 @@ const Skills = () => {
                 <div key={index}>
                   <ScrambledSplitText
                     text={item}
-                    classname="text-white-100 h-[20px] md:h-[26px] lg:h-[32px] text-[4vw] font-consola lg:text-[1.1rem] md:text-[1rem] xl:text-3xl"
+                    classname="text-white-100 h-[20px] md:h-[26px] lg:h-[32px] text-[4vw] font-mono-custom lg:text-[1.1rem] md:text-[1rem] xl:text-3xl"
                   />
                 </div>
               ))}

@@ -73,7 +73,7 @@ rounded-lg flex flex-col gap-10 md:p-10 xl:p-16'
                       name='name'
                       typeof='password'
                       placeholder={contact.formPlaceholders.name}
-                      className='p-4 xl:px-6 font-consola tracking-wide text-white bg-white/6 text-lg w-full rounded-2xl xl:text-[2rem] placeholder:text-xs placeholder:tracking-tight md:placeholder:text-lg md:placeholder:tracking-wide'
+                      className='p-4 xl:px-6 font-mono-custom tracking-wide text-white bg-white/6 text-lg w-full rounded-2xl xl:text-[2rem] placeholder:text-xs placeholder:tracking-tight md:placeholder:text-lg md:placeholder:tracking-wide'
                       required
                     />
                   </div>
@@ -82,7 +82,7 @@ rounded-lg flex flex-col gap-10 md:p-10 xl:p-16'
                       type='email'
                       name='email'
                       placeholder={contact.formPlaceholders.email}
-                      className='p-4 xl:px-6 h-16 font-consola tracking-wide text-white bg-white/6 text-lg w-full rounded-2xl xl:text-[2rem] placeholder:text-xs placeholder:tracking-tight md:placeholder:text-lg md:placeholder:tracking-wide'
+                      className='p-4 xl:px-6 h-16 font-mono-custom tracking-wide text-white bg-white/6 text-lg w-full rounded-2xl xl:text-[2rem] placeholder:text-xs placeholder:tracking-tight md:placeholder:text-lg md:placeholder:tracking-wide'
                       required
                     />
                   </div>
@@ -90,7 +90,7 @@ rounded-lg flex flex-col gap-10 md:p-10 xl:p-16'
                     <textarea
                       name='message'
                       placeholder={contact.formPlaceholders.message}
-                      className='p-4 xl:px-6 h-32 font-consola tracking-wide text-white bg-white/6 text-lg w-full rounded-2xl resize-none xl:h-44 xl:text-[2rem] placeholder:text-xs placeholder:tracking-tight md:placeholder:text-lg md:placeholder:tracking-wide'
+                      className='p-4 xl:px-6 h-32 font-mono-custom tracking-wide text-white bg-white/6 text-lg w-full rounded-2xl resize-none xl:h-44 xl:text-[2rem] placeholder:text-xs placeholder:tracking-tight md:placeholder:text-lg md:placeholder:tracking-wide'
                       required
                     ></textarea>
                   </div>

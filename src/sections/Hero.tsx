@@ -119,8 +119,8 @@ const Hero = ({ startAnimation }: { startAnimation: boolean }) => {
       <div className='w-full'>
         <h1
           ref={heroRef}
-          className='split px-7 opacity-0 font-mmedium
-                text-6xl md:text-[12vw] xl:text-[12rem] md:text-center  text-black-200'
+          className='split px-7 opacity-0 font-mmedium font-semibold
+                text-6xl md:text-[12vw] xl:text-[11rem] md:text-center  text-black-200'
         >
           {personal.firstName} <br className='block md:hidden' />
           {personal.lastName}

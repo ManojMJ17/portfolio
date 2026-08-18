@@ -1,25 +1,28 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import localFont from 'next/font/local';
+import { Inter } from 'next/font/google';
 import { Toaster } from 'sonner';
 import JsonLd from '@/components/seo/json-ld';
 
-const neueMontrealRegular = localFont({
-  src: '/fonts/NeueMontreal-Regular.woff2',
-  variable: '--font-montreal-regular',
+const interRegular = Inter({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-inter-regular',
   display: 'swap',
 });
 
-// Load Medium
-const neueMontrealMedium = localFont({
-  src: '/fonts/NeueMontreal-Medium.woff2',
-  variable: '--font-montreal-medium',
+const interMedium = Inter({
+  subsets: ['latin'],
+  weight: '500',
+  variable: '--font-inter-medium',
   display: 'swap',
 });
 
-const neueMontrealLight = localFont({
-  src: '/fonts/NeueMontreal-Light.woff2',
-  variable: '--font-montreal-light',
+const interLight = Inter({
+  subsets: ['latin'],
+  weight: '300',
+  variable: '--font-inter-light',
   display: 'swap',
 });
 
@@ -31,11 +34,6 @@ const azeretMonoLight = localFont({
 const azeretMonoRegular = localFont({
   src: '/fonts/AzeretMono-Regular.ttf',
   variable: '--font-azeretMono-regular',
-});
-
-const consola = localFont({
-  src: '/fonts/CONSOLA.ttf',
-  variable: '--font-consola',
 });
 
 export const metadata: Metadata = {
@@ -131,7 +129,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${neueMontrealLight.variable} ${neueMontrealMedium.variable} ${neueMontrealRegular.variable} ${azeretMonoLight.variable} ${azeretMonoRegular.variable} ${consola.variable} antialiased`}
+        className={`${interLight.variable} ${interMedium.variable} ${interRegular.variable} ${azeretMonoLight.variable} ${azeretMonoRegular.variable} antialiased`}
       >
         <JsonLd />
 

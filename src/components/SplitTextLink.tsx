@@ -111,7 +111,7 @@ const SplitTextLink = ({
       >
         <div
           ref={topRef}
-          className={`top-0 left-0 w-full font-mmedium
+          className={`top-0 left-0 w-full font-mmedium font-medium
                   text-[1rem] md:text-1xl lg:text-lg xl:text-xl flex items-center gap-x-[0.25em]  ${classname}`}
         >
           {text}
@@ -119,7 +119,7 @@ const SplitTextLink = ({
         <div
           ref={bottomRef}
           aria-hidden='true'
-          className={`top-full left-0 w-full font-mmedium
+          className={`top-full left-0 w-full font-mmedium font-semibold
                   text-[1rem] md:text-1xl lg:text-lg xl:text-xl flex items-center gap-x-[0.25em] ${classname}`}
         >
           {text}

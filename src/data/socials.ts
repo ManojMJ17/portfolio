@@ -3,7 +3,7 @@ import type { SocialLink } from './types';
 export const socialLinks: SocialLink[] = [
   {
     name: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/manoj-kumar-b35ab6348',
+    link: 'https://in.linkedin.com/in/manoj-kumar-mj172005',
   },
   {
     name: 'Github',
